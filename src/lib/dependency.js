@@ -1,7 +1,7 @@
 // @flow
 
 const fs = require('fs');
-const {join} = require('path');
+const {join, relative} = require('path');
 const path = require('./paths.js');
 const file = require('./file.js');
 
@@ -187,7 +187,10 @@ const dependencyUtils = {
       return;
     }
 
-    await file.createSymlink(src, distDir);
+    // Compute a relative path
+    const relativeSrc = relative(distDir, src);
+
+    await file.createSymlink(relativeSrc, distDir);
   }
 };
 

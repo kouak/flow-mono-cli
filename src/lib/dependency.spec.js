@@ -295,7 +295,7 @@ describe('dependency.createSymlinkForDependency()', () => {
     await dependency.createSymlinkForDependency('foo', '/foo', '/foo/bar');
 
     expect(file.createSymlink.mock.calls.length).toBe(1);
-    expect(file.createSymlink.mock.calls[0][0]).toBe('/foo/node_modules/foo');
+    expect(file.createSymlink.mock.calls[0][0]).toBe('../../node_modules/foo');
     expect(file.createSymlink.mock.calls[0][1]).toBe('/foo/bar/node_modules');
   });
 
